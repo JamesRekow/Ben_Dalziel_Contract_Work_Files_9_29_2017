@@ -1,0 +1,64 @@
+#  James Rekow
+
+DOCNSSelector = function(doc){
+  
+  #  ARGS: doc - input doc
+  #
+  #  RETURNS: docNS - doc with points outside the NS region (region of OD plane with
+  #                   overlap < xns) removed
+  
+  source("trimmer.r")
+  source("firstDeriv.r")
+  source("changePointComputer.r")
+  
+  #  pass NULL inputs through the function (in case a doc with value NULL was produced)
+  if(is.null(doc)){
+    return(NULL)
+  } #  end if
+  
+  #  extract overlap and dissimilarity vectors
+  over = doc[[1]]
+  diss = doc[[2]]
+  
+  #  grid of overlap values on which derivatives and means will be computed
+  x = seq(0, 1, 10 ^ (-4))
+  
+  #  create a DOC curve fitting the points in the DOC plane
+  smoothDOC = lowess(over, diss, f = 0.2)
+  
+  #  trim redundant values in the x and y elements of the lowess object (e.g. if an (x, y) point
+  #  is repeated multiple times, remove duplicates)
+  #  needed so we can use approx in the next step
+  smoothDOC = trimmer(smoothDOC)
+  
+  #  approximate the values of the DOC curve on the grid of overlap values x
+  smoothDOC = approx(smoothDOC$x, smoothDOC$y, xout = x, method = "linear", rule = 2)
+  
+  #  compute centered first derivative of the DOC curve
+  firstDeriv = firstDeriv(smoothDOC$y, 10 ^ (-4))
+  
+  #  TEST (remove this after NULL check?)
+  if(length(firstDeriv) == 0) print(firstDeriv)
+  
+  #  compute change point
+  changePoint = changePointComputer(firstDeriv)
+  
+  #  if an error was generated in changePointComputer and NULL was output, carry NULL through this
+  #  function
+  if(is.null(changePoint)){
+    return(NULL)
+  } #  end if
+  
+  #  compute xns
+  xns = smoothDOC$x[changePoint]
+  
+  NS = over >= xns
+  
+  overNS = over[NS]
+  dissNS = diss[NS]
+  
+  docNS = data.frame(x = overNS, y = dissNS)
+  
+  return(docNS)
+  
+} #  end DOCNSSelector function
