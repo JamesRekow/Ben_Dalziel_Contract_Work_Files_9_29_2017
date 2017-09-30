@@ -1,0 +1,79 @@
+Amazon AMI Notes
+
+Using default setup
+
+##  set up AMI in AWS  ##
+jamesrekow@gmail.com
+classic pw
+
+##  connect to AMI  ##
+open git bash on desktop
+first position is location of ssh key on laptop, second position uses the ip address of the AMI given to me by AWS
+ssh -i ~/.ssh/MyKeyPair.pem ec2-user@34.212.120.183
+
+##  create piusBenchmark directory in AMI  ##
+
+##  send files from laptop to AMI  ##
+open a second git bash on desktop
+copy a file from laptop to AMI, from git bash in home directory (on desktop) (need to change the ip address,
+which you get from AWS, and which is not always the same as the ip address given in the bash command prompt of the AMI):
+1st file is ssh key pair, second file is file to copy, third file is the address of AMI and the location
+in which to place the file copy
+scp -i ~/.ssh/MyKeyPair.pem ~/Desktop/Documents/Contract_Work/Ben_Dalziel/Universality_GLV_Model_3/* ec2-user@ec2-34-213-11-138.us-west-2.compute.amazonaws.com:~/piusBenchmark/
+
+
+##  install R on AMI  ##
+sudo yum install -y R
+
+##  perform tasks in R ##
+R #  to enter R
+install necessary packages
+install.packages(c("igraph", "gtools", "snow", "parallel")) #  this can take 5 minutes or so
+say yes twice
+choose CRAN mirror 53 (CA) unless that one fails to work
+source("piusBenchmark_AMI_Ver.r")
+piusBenchmark = piusBenchmark_AMI_Ver(numReplicates = 2, numComputeClusters = 32) #  example of runnning function
+write.csv(piusBenchmark, "piusBenchmark.csv", row.names = FALSE) #  save output as csv
+quit() #  when in R to exit
+
+##  send csv file back from AMI to laptop  ##
+this is also done in GIT BASH from laptop desktop (not in the AMI command line)
+write a file from AMI to laptop (same idea, just put AMI address and file location in second position after ssh key, and
+put file location in laptop in the 3rd position)
+scp -i ~/.ssh/MyKeyPair.pem ec2-user@ec2-34-213-11-138.us-west-2.compute.amazonaws.com:~/piusBenchmark/piusBenchmark.csv ~/Desktop/Documents/Contract_Work/Ben_Dalziel/Universality_GLV_Model_3/AWS_PIUS_Benchmark_Results
+
+
+c:\\Users\\James\\Desktop\\Documents\\Contract_Work\\Ben_Dalziel\\Universality_GLV_Model_3\\AMITest.r
+
+
+
+
+
+
+Started working at 7:45. Break at 8:15.
+Back: 10:25 - 10:50
+START: 8:12
+ESTIMATED END: 10:00ish
+
+
+Started working 7:20. Ended 9:45.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

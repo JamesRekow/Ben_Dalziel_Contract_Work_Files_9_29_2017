@@ -1,0 +1,9 @@
+MeanDegree: 4,,X1,X2,X3,X4
+,lambda: 0.5,5,8,7,6
+,lambda: 0.1,7,8,8,6
+,lambda: 0.15,2,6,4,10
+,,,,,
+MeanDegree: 6,,X5,X6,X7,X8
+,lambda: 0.5,6,8,7,6
+,lambda: 0.1,5,9,6,7
+,lambda: 0.15,4,9,7,9

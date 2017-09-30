@@ -1,0 +1,7 @@
+In identifySubgroupsTest2 function, consider putting -1 on the diagonal, instead of 0.
+
+I originally put 0 on the diagonal because I thought that self-comparisons gave no information.
+However, the each column/row represents asking the ith sample which other samples are in the same subgroup as it.
+Clearly a sample is in the same subgroup as itself, and the diagonal should reflect this by containing the strongest
+possible signal indicating "in same subgroup". Which should be calibrated to -1. Perhaps normalize the signal strengths
+in the comparison matrix to have max abs value 1.
