@@ -18,13 +18,13 @@ creation. This work is primarily in the function intraCohortInteraction.r.
   
 ## Data Structures ##  
   
-sample: A list with three elements: abundance (abd), growth rate (gr), and interaction matrix (imat).  
+**sample**: A list with three elements: abundance (abd), growth rate (gr), and interaction matrix (imat).  
           &nbsp;&nbsp; For a sample with N bacterial species (for example a dog with 10 species of bacteria in its nose)  
           &nbsp;&nbsp; abd and gr are each numerical vectors of length N, while imat is a numerical N x N matrix.  
   
 	abd - gr - imat  
   
-cohort: A list of samples.  
+**cohort**: A list of samples.  
   
 	abd - gr - imat  
           |  
@@ -37,52 +37,51 @@ cohort: A list of samples.
           |
   	     ...  
   
-doc: 
-:  A list frame containing the overlap and dissimilarity values of of each pair of samples from a cohort.  
-The first vector is the overlap values, the second vector is the dissimilarity values. To take advantage  
-of R's plotting internals the overlap and dissimilarity vectors are named "x" and "y" respectively.  
+**doc**: A list frame containing the overlap and dissimilarity values of of each pair of samples from a cohort.  
+           &nbsp;&nbsp; The first vector is the overlap values, the second vector is the dissimilarity values. To take advantage  
+           &nbsp;&nbsp; of R's plotting internals the overlap and dissimilarity vectors are named "x" and "y" respectively.  
   
 ## Common Variables ##  
   
-Note: This section gives a description of the most common variables found in the functions packaged with this  
+**Note**: This section gives a description of the most common variables found in the functions packaged with this  
       &nbsp;&nbsp; README. Variables described here are not listed in the ARGS section of functions in which they appear.  
       &nbsp;&nbsp; Instead, they are referred to as the "usual suspects".  
   
-M             - number of samples in a cohort  
-N             - number of bacterial species in a sample  
-iStrength     - interaction strength. A measure of the interaction strength between bacterial species in a sample,  
+**M**             - number of samples in a cohort  
+**N**             - number of bacterial species in a sample  
+**iStrength**     - interaction strength. A measure of the interaction strength between bacterial species in a sample,  
                 &nbsp;&nbsp; in the range [0, 1]. Assumed equal for each sample in a given cohort  
-univ          - universality, in the range [0, 1]. A measure of how similar the interactions between bacterial species  
+**univ**          - universality, in the range [0, 1]. A measure of how similar the interactions between bacterial species  
                 &nbsp;&nbsp; within a sample are between different samples in the same cohort. If univ = 1 then all samples have  
                 &nbsp;&nbsp; identical interaction matrices describing the inter-species interactions of bacteria within the sample  
                 &nbsp;&nbsp; and all samples have identical growth rates  
-sigmaMax      - parameter controlling the spread of values in the interaction matrices describing inter-bacterial  
+**sigmaMax**      - parameter controlling the spread of values in the interaction matrices describing inter-bacterial  
                 &nbsp;&nbsp; interactions within a sample  
-thresholdMult - controls the sensitivity of the integration step. Lowering this makes the integration  
+**thresholdMult** - controls the sensitivity of the integration step. Lowering this makes the integration  
                 &nbsp;&nbsp; more accurate  
-maxSteps      - the maximum number of integration steps allowed by the eulerIntegrate function before terminating  
-tStep         - time step. Delta t in the integration performed by eulerIntegrate  
-intTime       - total time during the interaction step. Unrelated to tStep  
-interSmplMult - the fraction of a sample's abundances that get transmitted upon contact with another sample   
+**maxSteps**      - the maximum number of integration steps allowed by the eulerIntegrate function before terminating  
+**tStep**         - time step. Delta t in the integration performed by eulerIntegrate  
+**intTime**       - total time during the interaction step. Unrelated to tStep  
+**interSmplMult** - the fraction of a sample's abundances that get transmitted upon contact with another sample   
                 &nbsp;&nbsp; (transmission is bi-directional and does not deplete the abundances of the sample from which it  
                 &nbsp;&nbsp; is transmitted)  
-lambda        - rate parameter for the exponentially distributed wait times between interactions  
-conGraph      - connectivity graph. Vertices represent samples and edges connect samples that can interact. This  
+**lambda**        - rate parameter for the exponentially distributed wait times between interactions  
+**conGraph**      - connectivity graph. Vertices represent samples and edges connect samples that can interact. This  
                 &nbsp;&nbsp; is an igraph object  
   
 ## Standard Names of Intermediate Variables ##  
   
-smpl     - sample  
-chrt     - cohort  
-abd      - abundance  
-gr       - growth rate  
-imat     - interaction matrix  
-abdList  - list of abundance vectors for each sample in a cohort  
-grList   - list of growth rate vectors for each sample in a cohort  
-imatList - list of interaction matrices for each sample in a cohort  
-conGraph - connectivity graph  
-doc/DOC  - doc object, as described above  
-DOCDF    - data frame doc instead of a list  
-DOCNS    - doc that only contains points in the negative slope (NS) region of the overlap-dissimilarity (OD) plane. That  
+**smpl**     - sample  
+**chrt**     - cohort  
+**abd**      - abundance  
+**gr**       - growth rate  
+**imat**     - interaction matrix  
+**abdList**  - list of abundance vectors for each sample in a cohort  
+**grList**   - list of growth rate vectors for each sample in a cohort  
+**imatList** - list of interaction matrices for each sample in a cohort  
+**conGraph** - connectivity graph  
+**doc/DOC**  - doc object, as described above  
+**DOCDF**    - data frame doc instead of a list  
+**DOCNS**    - doc that only contains points in the negative slope (NS) region of the overlap-dissimilarity (OD) plane. That  
            &nbsp;&nbsp; is, points with overlap greater than or equal to the largest overlap such that the DOC curve has a negative   
            &nbsp;&nbsp; slope for all overlap values greater than or equal to that one  
