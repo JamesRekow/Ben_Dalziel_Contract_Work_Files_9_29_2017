@@ -46,8 +46,8 @@ Note: This section gives a description of the most common variables found in the
       README. Variables described here are not listed in the ARGS section of functions in which they appear.
       Instead, they are referred to as the "usual suspects".
 
-M             - number of samples in a cohort
-N             - number of bacterial species in a sample
+M             - number of samples in a cohort  
+N             - number of bacterial species in a sample  
 iStrength     - interaction strength. A measure of the interaction strength between bacterial species in a sample,
                 in the range [0, 1]. Assumed equal for each sample in a given cohort
 univ          - universality, in the range [0, 1]. A measure of how similar the interactions between bacterial species
