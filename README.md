@@ -18,8 +18,8 @@ creation. This work is primarily in the function intraCohortInteraction.r.
 ## Data Structures ##  
   
 sample: A list with three elements: abundance (abd), growth rate (gr), and interaction matrix (imat).  
-        For a sample with N bacterial species (for example a dog with 10 species of bacteria in its nose)  
-        abd and gr are each numerical vectors of length N, while imat is a numerical N x N matrix.  
+       *** For a sample with N bacterial species (for example a dog with 10 species of bacteria in its nose)  
+       *** abd and gr are each numerical vectors of length N, while imat is a numerical N x N matrix.  
   
 	abd - gr - imat  
   
