@@ -26,7 +26,7 @@ sample: A list with three elements: abundance (abd), growth rate (gr), and inter
 cohort: A list of samples.  
   
 	abd - gr - imat  
-     |  
+         |  
            |  
 	abd - gr - imat  
           |   
