@@ -26,15 +26,15 @@ sample: A list with three elements: abundance (abd), growth rate (gr), and inter
 cohort: A list of samples.  
   
 	abd - gr - imat  
-      	|  
+     |  
            |  
 	abd - gr - imat  
-              |   
-              |  
+          |   
+          |  
 	abd - gr - imat   
-              |  
-              |
-      	 ...  
+          |  
+          |
+  	 ...  
   
 doc: A list frame containing the overlap and dissimilarity values of of each pair of samples from a cohort.  
      The first vector is the overlap values, the second vector is the dissimilarity values. To take advantage  
