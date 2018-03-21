@@ -36,9 +36,10 @@ cohort: A list of samples.
           |
   	     ...  
   
-doc: A list frame containing the overlap and dissimilarity values of of each pair of samples from a cohort.  
-     &nbsp;&nbsp; The first vector is the overlap values, the second vector is the dissimilarity values. To take advantage  
-     &nbsp;&nbsp; of R's plotting internals the overlap and dissimilarity vectors are named "x" and "y" respectively.  
+doc: 
+:  A list frame containing the overlap and dissimilarity values of of each pair of samples from a cohort.  
+The first vector is the overlap values, the second vector is the dissimilarity values. To take advantage  
+of R's plotting internals the overlap and dissimilarity vectors are named "x" and "y" respectively.  
   
 ## Common Variables ##  
   
