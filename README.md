@@ -1,7 +1,8 @@
 ## GLV_Model ##  
   
-James Rekow  
-4/14/2017  
+**Author**: James Rekow  
+**Description**:  
+
   
 ## Introduction ##  
   
